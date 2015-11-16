@@ -167,7 +167,7 @@ class Task(object):
             start = self.byteswritten
             if start < len(self.inputbuffer):
                 chunk = self.inputbuffer[start:start+BUFFER_SIZE]
-                self.byteswritten = start + os.write(fd, chunk)
+                self.byteswritten = start + os.write(fd, chunk.encode())
             else:
                 self.close_stdin(iomap)
         except (OSError, IOError):
